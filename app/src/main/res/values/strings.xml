@@ -2,6 +2,7 @@
     <string name="app_name">Accountant Mini</string>
     <string name="add_transaction">Add Transaction</string>
     <string name="accounts">Accounts List</string>
+    <string name="add_new_account">Add Account</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
