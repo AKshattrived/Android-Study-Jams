@@ -3,6 +3,13 @@
     <string name="add_transaction">Add Transaction</string>
     <string name="accounts">Accounts List</string>
     <string name="add_new_account">Add Account</string>
+    <string name="description">Description</string>
+    <string name="save_action">SAVE</string>
+    <string name="currency_symbol">₹</string>
+    <string name="account_balance">Balance<font color='#FF0000'>*</font></string>
+    <string name="account_name_req">Account Name<font color='#FF0000'>*</font></string>
+    <string name="real_account">Real [<font color='#00FF00'>DEBIT(+) </font><font color='#FF0000'>CREDIT(-)</font>]</string>
+    <string name="personal_account">Personal [<font color='#FF0000'>DEBIT(-) </font><font color='#00FF00'>CREDIT(+)</font>]</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
