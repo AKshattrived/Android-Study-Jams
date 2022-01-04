@@ -2,9 +2,13 @@ package com.example.accountantmini
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import com.example.accountantmini.data.AccountantDatabse
+import com.example.accountantmini.data.entities.Account
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -19,6 +23,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         navController = navHostFragment.navController
         // Set up the action bar for use with the NavController
         setupActionBarWithNavController(this, navController)
+
+        //Test Code
+        val dao = AccountantDatabse.getDatabase(this).accountantDao()
+
+        val accounts = listOf(
+            Account("cash"),
+            Account("sell")
+        )
+        lifecycleScope.launch {
+            accounts.forEach { dao.insertAccount(it) }
+        }
     }
 
     /**
