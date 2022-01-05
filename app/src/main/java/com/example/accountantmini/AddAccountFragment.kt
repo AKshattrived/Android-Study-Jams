@@ -41,11 +41,16 @@ class AddAccountFragment : Fragment() {
 
     private fun addNewAccount(){
         if (isEntryValid()){
+            val acctype:String = if (binding.accountType.checkedRadioButtonId==binding.personal.id){
+                "personal"
+            }else{
+                "real"
+            }
             viewModel.addAccount(
                 binding.accountName.text.toString(),
                 binding.accountDesc.text.toString(),
                 binding.balance.text.toString(),
-                binding.accountType.checkedRadioButtonId.toString(),
+                acctype
             )
             val action = AddAccountFragmentDirections.actionAddAccountFragmentToAccountListFragment()
             findNavController().navigate(action)
