@@ -10,13 +10,14 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.accountantmini.data.AccountantDatabse
 import com.example.accountantmini.databinding.FragmentAddAccountBinding
 
 class AddAccountFragment : Fragment() {
 
-    private val viewModel: AccountantViewModel by activityViewModels{
-        AccountantViewModelFactory(activity?.let { AccountantDatabse.getDatabase(it.applicationContext).accountantDao() }!!)
+    private val viewModel: AccountantViewModel by activityViewModels {
+        AccountantViewModelFactory(
+            (activity?.application as AccountantApplication).database.accountantDao()
+        )
     }
 
     private var _binding: FragmentAddAccountBinding? = null
