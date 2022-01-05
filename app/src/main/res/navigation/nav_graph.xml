@@ -35,5 +35,10 @@
         android:id="@+id/addAccountFragment"
         android:name="com.example.accountantmini.AddAccountFragment"
         android:label="@string/add_new_account"
-        tools:layout="@layout/fragment_add_account" />
+        tools:layout="@layout/fragment_add_account" >
+        <action
+            android:id="@+id/action_addAccountFragment_to_accountListFragment"
+            app:destination="@id/accountListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

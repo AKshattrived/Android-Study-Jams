@@ -17,14 +17,14 @@ abstract class AccountantDatabse: RoomDatabase() {
         private var INSTANCE: AccountantDatabse? = null
 
         fun getDatabase(context: Context): AccountantDatabse {
-            return INSTANCE ?: synchronized(this){
-                val instance = Room.databaseBuilder(
+            synchronized(this) {
+                return INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
                     AccountantDatabse::class.java,
-                    "accountant_db"
-                ).fallbackToDestructiveMigration().build()
-                INSTANCE = instance
-                return instance
+                    "school_db"
+                ).build().also {
+                    INSTANCE = it
+                }
             }
         }
     }
