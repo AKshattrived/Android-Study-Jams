@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.example.accountantmini.data.AccountantDatabse
 import com.example.accountantmini.data.entities.Account
+import com.example.accountantmini.data.entities.Transaction
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -24,27 +25,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         // Set up the action bar for use with the NavController
         setupActionBarWithNavController(this, navController)
 
-        //Test Code
-//        val dao = AccountantDatabse.getDatabase(this).accountantDao()
-//
-//        val accounts = listOf(
-//            Account(
-//                accountName = "cash",
-//                description = "cashAcc",
-//                balance = 200.0,
-//                accountType = "real"
-//            ),
-//            Account(
-//                accountName = "bank",
-//                description = "boi",
-//                balance = 200.0,
-//                accountType = "real"
-//            )
-//        )
-//
-//        lifecycleScope.launch {
-//            accounts.forEach { dao.insertAccount(it) }
-//        }
+
     }
 
     /**

@@ -11,10 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 class AddTransactionFragment : Fragment() {
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()
-
     }
 
     override fun onCreateView(

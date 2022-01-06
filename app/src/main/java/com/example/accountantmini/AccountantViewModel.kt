@@ -1,15 +1,13 @@
 package com.example.accountantmini
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.accountantmini.data.AccountantDao
 import com.example.accountantmini.data.entities.Account
 import kotlinx.coroutines.launch
 
 class AccountantViewModel(private val accountantDao: AccountantDao): ViewModel() {
 
-
+    val allAccounts: LiveData<List<Account>> = accountantDao.getAccounts().asLiveData()
 
     private fun insertAccount(account:Account){
         viewModelScope.launch {

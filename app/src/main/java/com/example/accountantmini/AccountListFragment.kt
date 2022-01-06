@@ -6,12 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.accountantmini.adapters.AccountListAdapter
 import com.example.accountantmini.databinding.FragmentAccountListBinding
 
 
 
 class AccountListFragment : Fragment() {
+
+    private val viewModel : AccountantViewModel by activityViewModels {
+        AccountantViewModelFactory(
+            (activity?.application as AccountantApplication).database.accountantDao()
+        )
+    }
 
     private var _binding: FragmentAccountListBinding? = null
     private val binding get() = _binding!!
@@ -35,6 +44,19 @@ class AccountListFragment : Fragment() {
 
         binding.floatingActionButton.setOnClickListener {
             val action = AccountListFragmentDirections.actionAccountListFragmentToAddAccountFragment()
-            findNavController().navigate(action)        }
+            findNavController().navigate(action)
+        }
+
+        val adapter = AccountListAdapter{
+            // TODO: 06-01-2022 navigation to account detail fragment
+        }
+        binding.recyclerView.adapter = adapter
+        viewModel.allAccounts.observe(this.viewLifecycleOwner) { accounts ->
+            accounts.let {
+                adapter.submitList(it)
+            }
+        }
+        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+
     }
 }

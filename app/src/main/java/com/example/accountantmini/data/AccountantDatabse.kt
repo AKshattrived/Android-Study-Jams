@@ -5,8 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.accountantmini.data.entities.Account
+import com.example.accountantmini.data.entities.Transaction
 
-@Database( entities = [Account::class], version = 1, exportSchema = false)
+@Database( entities = [Account::class, Transaction::class], version = 1, exportSchema = false)
 abstract class AccountantDatabse: RoomDatabase() {
 
     abstract fun accountantDao() : AccountantDao

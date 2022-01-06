@@ -1,10 +1,9 @@
 package com.example.accountantmini.data
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
+import androidx.room.*
 import com.example.accountantmini.data.entities.Account
+import com.example.accountantmini.data.entities.Transaction
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AccountantDao {
@@ -12,6 +11,13 @@ interface AccountantDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAccount(account:Account)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertTransaction(transaction: Transaction)
+
     @Delete
     suspend fun deleteAccount(account: Account)
+
+    @androidx.room.Transaction
+    @Query("SELECT * FROM account")
+    fun getAccounts(): Flow<List<Account>>
 }
