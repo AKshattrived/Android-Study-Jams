@@ -6,6 +6,8 @@
     <string name="description">Description</string>
     <string name="save_action">SAVE</string>
     <string name="currency_symbol">₹</string>
+    <string name="credit_account">Credit Account<font color='#FF0000'>*</font></string>
+    <string name="debit_account">Debit Account<font color='#FF0000'>*</font></string>
     <string name="account_balance">Balance<font color='#FF0000'>*</font></string>
     <string name="account_name_req">Account Name<font color='#FF0000'>*</font></string>
     <string name="transaction_amount_req">Transaction Amount<font color='#FF0000'>*</font></string>

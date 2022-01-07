@@ -26,10 +26,25 @@ class AccountantViewModel(private val accountantDao: AccountantDao): ViewModel()
     }
 
     fun isEntryValid(accountName:String, accountBalance:String): Boolean{
-        if (accountBalance.isBlank() || accountName.isBlank()){
+        if (accountBalance.isBlank() || accountName.isBlank() || accountNameTaken(accountName)){
             return false
         }
         return true
+    }
+
+    private fun  accountNameTaken(accountName: String):Boolean{
+        val accountNameList = accountNameStringList()
+        if (accountNameList.contains(accountName)){
+            return true
+        }
+        return false
+    }
+
+    private fun accountNameStringList():List<String>{
+        val accountNameList = mutableListOf("")
+        allAccounts.value?.forEach { accountNameList.add(it.accountName) }
+        accountNameList.remove("")
+        return accountNameList
     }
 }
 
