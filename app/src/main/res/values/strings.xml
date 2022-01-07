@@ -8,6 +8,8 @@
     <string name="currency_symbol">₹</string>
     <string name="account_balance">Balance<font color='#FF0000'>*</font></string>
     <string name="account_name_req">Account Name<font color='#FF0000'>*</font></string>
+    <string name="transaction_amount_req">Transaction Amount<font color='#FF0000'>*</font></string>
+    <string name="transaction_note">Add Note</string>
     <string name="real_account">Real [<font color='#00FF00'>DEBIT(+) </font><font color='#FF0000'>CREDIT(-)</font>]</string>
     <string name="personal_account">Personal [<font color='#FF0000'>DEBIT(-) </font><font color='#00FF00'>CREDIT(+)</font>]</string>
     <!-- TODO: Remove or change this placeholder text -->
