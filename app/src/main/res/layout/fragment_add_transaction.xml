@@ -53,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
             android:hint="@string/credit_account"
+            app:startIconDrawable="@drawable/ic_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/transaction_note_label">
@@ -72,6 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
             android:hint="@string/debit_account"
+            app:startIconDrawable="@drawable/ic_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/credit_label">

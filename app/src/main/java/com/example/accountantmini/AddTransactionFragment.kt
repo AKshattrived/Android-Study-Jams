@@ -49,6 +49,40 @@ class AddTransactionFragment : Fragment() {
             creditAccount.threshold= 0
             debitAccount.setAdapter(accountListAdapter)
             debitAccount.threshold=0
+            creditAccount.setOnDismissListener { setIcon() }
+            debitAccount.setOnDismissListener { setIcon() }
+        }
+
+    }
+
+    private fun setIcon(){
+        var creditType = ""
+        viewModel.allAccounts.observe(this.viewLifecycleOwner) { accounts ->
+            accounts.forEach {
+                if (it.accountName==binding.creditAccount.text.toString()) {
+                    creditType = it.accountType
+                }
+            }
+        }
+        if (creditType=="real"){
+            binding.creditLabel.setStartIconDrawable(R.drawable.ic_minus)
+        }else if (creditType=="personal"){
+            binding.creditLabel.setStartIconDrawable(R.drawable.ic_plus)
+        }
+
+
+        var debitType = ""
+        viewModel.allAccounts.observe(this.viewLifecycleOwner) { accounts ->
+            accounts.forEach {
+                if (it.accountName==binding.debitAccount.text.toString()) {
+                    debitType = it.accountType
+                }
+            }
+        }
+        if (debitType=="real"){
+            binding.debitLabel.setStartIconDrawable(R.drawable.ic_plus)
+        }else if (debitType=="personal"){
+            binding.debitLabel.setStartIconDrawable(R.drawable.ic_minus)
         }
     }
 }
