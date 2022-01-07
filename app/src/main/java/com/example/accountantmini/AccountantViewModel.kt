@@ -3,6 +3,7 @@ package com.example.accountantmini
 import androidx.lifecycle.*
 import com.example.accountantmini.data.AccountantDao
 import com.example.accountantmini.data.entities.Account
+import com.example.accountantmini.data.entities.Transaction
 import kotlinx.coroutines.launch
 
 class AccountantViewModel(private val accountantDao: AccountantDao): ViewModel() {
@@ -45,6 +46,85 @@ class AccountantViewModel(private val accountantDao: AccountantDao): ViewModel()
         allAccounts.value?.forEach { accountNameList.add(it.accountName) }
         accountNameList.remove("")
         return accountNameList
+    }
+
+    fun addTransaction(amount: String,note: String,creditString: String,debitString: String){
+        val creditAccount = accountId(creditString)
+        val debitAccount = accountId(debitString)
+
+        val newCreditBalance: Double = if (creditAccount.accountType == "real"){
+            creditAccount.balance - amount.toDouble()
+        }else{
+            creditAccount.balance + amount.toDouble()
+        }
+        val newDebitBalance: Double = if (debitAccount.accountType == "real"){
+            debitAccount.balance + amount.toDouble()
+        }else{
+            debitAccount.balance - amount.toDouble()
+        }
+
+        val newCreditAccount = Account(
+            accountName = creditAccount.accountName,
+            description = creditAccount.description,
+            accountType = creditAccount.accountType,
+            accountId = creditAccount.accountId,
+            balance = newCreditBalance
+        )
+        updateAccount(newCreditAccount)
+
+        val newDebitAccount = Account(
+            accountName = debitAccount.accountName,
+            description = debitAccount.description,
+            accountType = debitAccount.accountType,
+            accountId = debitAccount.accountId,
+            balance = newDebitBalance
+        )
+        updateAccount(newDebitAccount)
+
+        val newTransaction = Transaction(
+            creditAccountId = creditAccount.accountId,
+            debitAccountId = debitAccount.accountId,
+            amount = amount.toDouble(),
+            transactionDescription = note
+        )
+        insertTransaction(newTransaction)
+    }
+
+    private fun insertTransaction(transaction: Transaction){
+        viewModelScope.launch {
+            accountantDao.insertTransaction(transaction)
+        }
+    }
+
+    private fun updateAccount(account: Account){
+        viewModelScope.launch {
+            accountantDao.updateAccount(account)
+        }
+    }
+
+    private fun accountId(accountSting: String): Account{
+        var account: Account? = null
+        allAccounts.value?.forEach {
+            if (it.accountName==accountSting){
+                account = it
+            }
+        }
+        return account!!
+    }
+
+    fun isTransactionValid(amount: String, creditAccount: String, debitAccount: String):Boolean{
+        if ( amount.isBlank() || amount.toDouble() < 0 || accountsAreNotValid(creditAccount,debitAccount)){
+            return false
+        }
+        return true
+    }
+
+    private fun accountsAreNotValid(creditAccount: String,debitAccount: String):Boolean{
+        if ( creditAccount.isBlank() || debitAccount.isBlank() || debitAccount==creditAccount
+            || !accountNameStringList().contains(debitAccount) || !accountNameStringList().contains(creditAccount)){
+            return true
+        }
+        return false
     }
 }
 

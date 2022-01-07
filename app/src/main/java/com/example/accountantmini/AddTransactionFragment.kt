@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.accountantmini.databinding.FragmentAddTransactionBinding
 
 
@@ -51,8 +52,32 @@ class AddTransactionFragment : Fragment() {
             debitAccount.threshold=0
             creditAccount.setOnDismissListener { setIcon() }
             debitAccount.setOnDismissListener { setIcon() }
+            saveAction.setOnClickListener {
+                addTransaction()
+            }
         }
 
+    }
+
+    private fun addTransaction(){
+        if (isTransactionValid()){
+            viewModel.addTransaction(
+                binding.transactionAmount.text.toString(),
+                binding.transactionNote.text.toString(),
+                binding.creditAccount.text.toString(),
+                binding.debitAccount.text.toString()
+            )
+            val action = AddTransactionFragmentDirections.actionAddTransactionFragmentToStartFragment()
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun isTransactionValid():Boolean{
+        return viewModel.isTransactionValid(
+            binding.transactionAmount.text.toString(),
+            binding.creditAccount.text.toString(),
+            binding.debitAccount.text.toString()
+        )
     }
 
     private fun setIcon(){

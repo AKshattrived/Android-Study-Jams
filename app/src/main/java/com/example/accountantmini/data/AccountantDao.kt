@@ -11,6 +11,9 @@ interface AccountantDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAccount(account:Account)
 
+    @Update
+    suspend fun updateAccount(account:Account)
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertTransaction(transaction: Transaction)
 

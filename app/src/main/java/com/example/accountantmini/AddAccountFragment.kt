@@ -35,7 +35,6 @@ class AddAccountFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.saveAction.setOnClickListener {
-            Toast.makeText(activity, "save btn clicked", Toast.LENGTH_SHORT).show()
             addNewAccount()
         }
     }
