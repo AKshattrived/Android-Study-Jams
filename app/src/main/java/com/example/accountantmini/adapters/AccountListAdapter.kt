@@ -35,6 +35,7 @@ class AccountListAdapter(private val onAccountClicked: (Account) -> Unit):
             fun bind(account: Account){
                 binding.apply {
                     accountName.text = account.accountName
+                    accountType.text = "Type: " + account.accountType
                     balance.text = account.balance.toString()
                     description.text = account.description
                 }
