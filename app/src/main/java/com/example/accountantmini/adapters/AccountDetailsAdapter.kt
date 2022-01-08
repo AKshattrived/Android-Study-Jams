@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.accountantmini.data.entities.Transaction
+import com.example.accountantmini.adapters.data.transactionsAdapterData
 import com.example.accountantmini.databinding.TransactionListItemBinding
 
-class AccountDetailsAdapter(private val onTransactionClicked: (Transaction) -> Unit):
-    ListAdapter<Transaction, AccountDetailsAdapter.TransactionViewHolder>(DiffCallback){
+class AccountDetailsAdapter(private val onTransactionClicked: (transactionsAdapterData) -> Unit):
+    ListAdapter<transactionsAdapterData, AccountDetailsAdapter.TransactionViewHolder>(DiffCallback){
 
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
@@ -33,24 +33,23 @@ class AccountDetailsAdapter(private val onTransactionClicked: (Transaction) -> U
     class TransactionViewHolder(private var binding: TransactionListItemBinding):
         RecyclerView.ViewHolder(binding.root) {
 
-            fun bind(transaction: Transaction){
+            fun bind(transaction: transactionsAdapterData){
                 binding.apply {
-                    debitAccountId.text = transaction.debitAccountId.toString()
-                    creditAccountId.text = transaction.creditAccountId.toString()
-                    transactionAmount.text = transaction.amount.toString()
-                    transactionNote.text = transaction.transactionDescription
+                    otherAccountName.text = transaction.otherAccount
+                    transactionAmount.text = transaction.transactionAmount.toString()
+                    transactionNote.text = transaction.transactionNote
                 }
             }
     }
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<Transaction>(){
+        private val DiffCallback = object : DiffUtil.ItemCallback<transactionsAdapterData>(){
 
-            override fun areContentsTheSame(oldItem: Transaction, newItem: Transaction): Boolean {
+            override fun areContentsTheSame(oldItem: transactionsAdapterData, newItem: transactionsAdapterData): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areItemsTheSame(oldItem: Transaction, newItem: Transaction): Boolean {
+            override fun areItemsTheSame(oldItem: transactionsAdapterData, newItem: transactionsAdapterData): Boolean {
                 return oldItem.transactionId == newItem.transactionId
             }
         }
