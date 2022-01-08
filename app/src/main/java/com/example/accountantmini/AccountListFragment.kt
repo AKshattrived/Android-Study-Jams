@@ -48,7 +48,8 @@ class AccountListFragment : Fragment() {
         }
 
         val adapter = AccountListAdapter{
-            // TODO: 06-01-2022 navigation to account detail fragment
+            val action = AccountListFragmentDirections.actionAccountListFragmentToAccountDetailsFragment(it.accountId)
+            findNavController().navigate(action)
         }
         binding.recyclerView.adapter = adapter
         viewModel.allAccounts.observe(this.viewLifecycleOwner) { accounts ->

@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_accountListFragment_to_addAccountFragment"
             app:destination="@id/addAccountFragment" />
+        <action
+            android:id="@+id/action_accountListFragment_to_accountDetailsFragment"
+            app:destination="@id/accountDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTransactionFragment"
@@ -44,6 +47,20 @@
         tools:layout="@layout/fragment_add_account" >
         <action
             android:id="@+id/action_addAccountFragment_to_accountListFragment"
+            app:destination="@id/accountListFragment"
+            app:popUpTo="@id/accountListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountDetailsFragment"
+        android:name="com.example.accountantmini.AccountDetailsFragment"
+        android:label="fragment_account_details"
+        tools:layout="@layout/fragment_account_details" >
+        <argument
+            android:name="account_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_accountDetailsFragment_to_accountListFragment"
             app:destination="@id/accountListFragment"
             app:popUpTo="@id/accountListFragment"
             app:popUpToInclusive="true" />
