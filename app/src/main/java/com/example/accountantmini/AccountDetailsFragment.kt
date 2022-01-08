@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.accountantmini.adapters.AccountDetailsAdapter
 import com.example.accountantmini.data.entities.Account
 import com.example.accountantmini.databinding.FragmentAccountDetailsBinding
 
@@ -44,7 +46,15 @@ class AccountDetailsFragment : Fragment() {
 
         binding.balanceText.text = "Balance: " + getCurrentAccount().balance
 
-
+        viewModel.retrieveTransactionOf(navigationArgs.accountId)
+        val adapter = AccountDetailsAdapter{}
+        binding.recyclerView.adapter = adapter
+        viewModel.transactionOfAccount?.observe(this.viewLifecycleOwner) { transactions ->
+            transactions.let {
+                adapter.submitList(it)
+            }
+        }
+        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
     }
 
     private fun getCurrentAccount(): Account {
