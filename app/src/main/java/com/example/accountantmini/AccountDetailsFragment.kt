@@ -6,11 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import com.example.accountantmini.data.entities.Account
 import com.example.accountantmini.databinding.FragmentAccountDetailsBinding
 
 
 class AccountDetailsFragment : Fragment() {
+
+    private val viewModel : AccountantViewModel by activityViewModels {
+        AccountantViewModelFactory(
+            (activity?.application as AccountantApplication).database.accountantDao()
+        )
+    }
 
     private val navigationArgs: AccountDetailsFragmentArgs by navArgs()
 
@@ -20,7 +28,7 @@ class AccountDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title = "Example 1"
+        (activity as AppCompatActivity).supportActionBar?.title = getCurrentAccount().accountName
     }
 
     override fun onCreateView(
@@ -30,5 +38,21 @@ class AccountDetailsFragment : Fragment() {
         _binding = FragmentAccountDetailsBinding.inflate(inflater,container,false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.balanceText.text = "Balance: " + getCurrentAccount().balance
+
+
+    }
+
+    private fun getCurrentAccount(): Account {
+        val accountID = navigationArgs.accountId
+        var account: Account? = null
+        viewModel.allAccounts.value?.forEach { if (it.accountId == accountID) account=it }
+        return account!!
+    }
+
 
 }

@@ -23,4 +23,8 @@ interface AccountantDao {
     @androidx.room.Transaction
     @Query("SELECT * FROM account")
     fun getAccounts(): Flow<List<Account>>
+
+    @androidx.room.Transaction
+    @Query("SELECT * FROM `transaction` WHERE ( debitAccountId= :accountId OR creditAccountId= :accountId) order by transactionId desc")
+    fun getTransactionOf(accountId: Int): Flow<List<Transaction>>
 }

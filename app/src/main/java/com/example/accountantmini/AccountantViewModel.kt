@@ -9,6 +9,13 @@ import kotlinx.coroutines.launch
 class AccountantViewModel(private val accountantDao: AccountantDao): ViewModel() {
 
     val allAccounts: LiveData<List<Account>> = accountantDao.getAccounts().asLiveData()
+    var transactionOfAccount : LiveData<List<Transaction>>? = null
+
+    fun retrieveTransactionOf(accountId: Int){
+        viewModelScope.launch {
+            transactionOfAccount = accountantDao.getTransactionOf(accountId).asLiveData()
+        }
+    }
 
     private fun insertAccount(account:Account){
         viewModelScope.launch {
