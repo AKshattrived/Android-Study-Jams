@@ -14,6 +14,5 @@
     <string name="transaction_note">Add Note</string>
     <string name="real_account">Real [<font color='#00FF00'>DEBIT(+) </font><font color='#FF0000'>CREDIT(-)</font>]</string>
     <string name="personal_account">Personal [<font color='#FF0000'>DEBIT(-) </font><font color='#00FF00'>CREDIT(+)</font>]</string>
-    <string name="edit_account">Edit Account</string>
     <string name="delete_account">Delete Account</string>
 </resources>
