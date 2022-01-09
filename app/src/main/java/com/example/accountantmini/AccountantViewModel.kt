@@ -11,9 +11,9 @@ class AccountantViewModel(private val accountantDao: AccountantDao): ViewModel()
     val allAccounts: LiveData<List<Account>> = accountantDao.getAccounts().asLiveData()
     var transactionOfAccount : LiveData<List<Transaction>>? = null
 
-    fun retrieveTransactionOf(accountId: Int){
+    fun retrieveTransactionOf(accountName: String){
         viewModelScope.launch {
-            transactionOfAccount = accountantDao.getTransactionOf(accountId).asLiveData()
+            transactionOfAccount = accountantDao.getTransactionOf(accountName).asLiveData()
         }
     }
 
@@ -89,8 +89,8 @@ class AccountantViewModel(private val accountantDao: AccountantDao): ViewModel()
         updateAccount(newDebitAccount)
 
         val newTransaction = Transaction(
-            creditAccountId = creditAccount.accountId,
-            debitAccountId = debitAccount.accountId,
+            creditAccount = creditAccount.accountName,
+            debitAccount = debitAccount.accountName,
             amount = amount.toDouble(),
             transactionDescription = note
         )

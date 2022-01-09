@@ -35,9 +35,9 @@ class AccountDetailsAdapter(private val onTransactionClicked: (Transaction) -> U
 
             fun bind(transaction: Transaction){
                 binding.apply {
-                    creditAccount.text = transaction.creditAccountId.toString()
-                    debitAccount.text = transaction.debitAccountId.toString()
-                    transactionAmount.text = transaction.amount.toString()
+                    creditAccount.text = "Credit: "+transaction.creditAccount
+                    debitAccount.text = "Debit: "+transaction.debitAccount
+                    transactionAmount.text = "₹" + transaction.amount.toString()
                     transactionNote.text = transaction.transactionDescription
                 }
             }

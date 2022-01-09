@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class Transaction(
     @PrimaryKey(autoGenerate = true)
     val transactionId: Int = 0,
-    val creditAccountId: Int,
-    val debitAccountId: Int,
+    val creditAccount: String,
+    val debitAccount: String,
     val amount: Double,
     val transactionDescription: String
 )

@@ -24,8 +24,8 @@ class AccountDetailsFragment : Fragment() {
 
     private val navigationArgs: AccountDetailsFragmentArgs by navArgs()
 
-    var _binding : FragmentAccountDetailsBinding? = null
-    val binding get() = _binding!!
+    private var _binding : FragmentAccountDetailsBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +46,8 @@ class AccountDetailsFragment : Fragment() {
 
         binding.balanceText.text = "Balance: " + getCurrentAccount().balance
 
-        viewModel.retrieveTransactionOf(navigationArgs.accountId)
+        val currentAccount = viewModel.allAccounts.value?.find { it.accountId == navigationArgs.accountId }
+        viewModel.retrieveTransactionOf(currentAccount!!.accountName)
         val adapter = AccountDetailsAdapter{}
         binding.recyclerView.adapter = adapter
         viewModel.transactionOfAccount?.observe(this.viewLifecycleOwner) { transactions ->
