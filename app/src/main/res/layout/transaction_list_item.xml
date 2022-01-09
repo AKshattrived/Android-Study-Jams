@@ -15,12 +15,20 @@
         android:layout_margin="@dimen/margin_between_elements">
 
         <TextView
-            android:id="@+id/other_account_name"
+            android:id="@+id/credit_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            tools:text="Other Account"/>
+            tools:text="Debit Account"/>
 
+
+        <TextView
+            android:id="@+id/debit_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_toEndOf="@+id/credit_account"
+            tools:text="Credit Account" />
 
         <TextView
             android:id="@+id/transaction_amount"
@@ -34,7 +42,8 @@
             android:id="@+id/transaction_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/other_account_name"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/credit_account"
             android:layout_alignParentStart="true"
             tools:text="description"/>
 

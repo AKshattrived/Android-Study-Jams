@@ -51,7 +51,7 @@ class AccountDetailsFragment : Fragment() {
         binding.recyclerView.adapter = adapter
         viewModel.transactionOfAccount?.observe(this.viewLifecycleOwner) { transactions ->
             transactions.let {
-                adapter.submitList(viewModel.getTransactionsAdapterList(navigationArgs.accountId))
+                adapter.submitList(it)
             }
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
