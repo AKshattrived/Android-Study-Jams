@@ -35,18 +35,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_transaction"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Logo2" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@id/account_list_btn"
+        app:layout_constraintStart_toStartOf="@id/account_list_btn"
+        app:layout_constraintTop_toBottomOf="@id/account_list_btn"/>
     <Button
         android:id="@+id/account_list_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="@string/accounts"
-        app:layout_constraintEnd_toEndOf="@id/add_transaction_btn"
-        app:layout_constraintStart_toStartOf="@id/add_transaction_btn"
-        app:layout_constraintTop_toBottomOf="@id/add_transaction_btn" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Logo2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
