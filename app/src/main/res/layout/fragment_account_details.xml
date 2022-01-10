@@ -18,17 +18,19 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_height="match_parent"
             tools:text="Balance: "/>
 
-        <Button
-            android:id="@+id/delete_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+        <TextView
+            android:id="@+id/account_type_text"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:text="@string/delete_account"/>
+            android:layout_width="0dp"
+            android:gravity="center_vertical"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_height="match_parent"
+            tools:text="Account type"/>
 
     </LinearLayout>
 

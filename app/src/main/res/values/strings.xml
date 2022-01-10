@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Accountant Mini</string>
+    <string name="accountant">Accountant</string>
+    <string name="mini">Mini</string>
     <string name="add_transaction">Add Transaction</string>
     <string name="accounts">Accounts List</string>
     <string name="add_new_account">Add Account</string>

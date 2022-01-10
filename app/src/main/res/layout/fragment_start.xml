@@ -6,15 +6,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".StartFragment">
 
+    <TextView
+        android:id="@+id/Logo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/accountant"
+        android:textColor="@color/blue"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Logo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mini"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/Logo1"
+        app:layout_constraintTop_toBottomOf="@+id/Logo1" />
+
     <Button
         android:id="@+id/add_transaction_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="276dp"
         android:text="@string/add_transaction"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/Logo2" />
     <Button
         android:id="@+id/account_list_btn"
         android:layout_width="wrap_content"
