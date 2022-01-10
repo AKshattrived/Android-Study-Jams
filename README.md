@@ -29,6 +29,6 @@ To implement above concepts there are total 5 screens in application. From the f
 
 <b> Application Link & Future Scope : </b>
 
-The app is currently in its basic form and developed focusing on its basic functionalities, You can access the app : [FIND .apk HERE](https://github.com/AKshattrived/Android-Study-Jams/edit/master/README.md).
+The app is currently in its basic form and developed focusing on its basic functionalities, You can access the app : [FIND .apk HERE](https://drive.google.com/drive/folders/1Sea8TMDLao_NXrxOxWh7DJtR90PqF1ot?usp=sharing).
 
 In future, we plan to connect the application with internet so that database can be backed up. After final build this application can be used by different users to keep track of their finance. This app will allow users to manage their accounting on the tip of their fingers.
